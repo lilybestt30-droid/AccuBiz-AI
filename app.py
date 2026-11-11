@@ -11,16 +11,25 @@ st.title("📊 AccuBiz AI")
 st.subheader("Sistem Informasi Akuntansi Berbasis AI untuk UMKM")
 st.markdown("Penilaian Kesehatan Keuangan & Pendukung Pengambilan Keputusan")
 
-# --- FITUR UJI COBA (Langsung di Halaman Utama) ---
+# --- FITUR UJI COBA (Ditanam langsung di kode agar tidak error FileNotFoundError) ---
 st.markdown("---")
 st.write("**Mode Uji Coba: Gunakan data sampel ini jika Anda belum memiliki file data sendiri.**")
-with open("data_uji_coba_accubiz_zx.csv", "rb") as f:
-    st.download_button(
-        label="📥 Unduh Data Uji Coba (CSV)", 
-        data=f, 
-        file_name="data_uji_coba_accubiz_zx.csv", 
-        mime="text/csv"
-    )
+
+# Data disematkan langsung dalam bentuk string
+csv_data = """Bulan,Total_Aset,Total_Hutang,Laba_Bersih,Pendapatan,Z_Score,X_Score
+2023-01,100000000,40000000,5000000,20000000,3.0,-1.5
+2023-02,105000000,42000000,4000000,19000000,2.7,-0.5
+2023-03,102000000,45000000,2000000,18000000,2.0,-0.1
+2023-04,95000000,50000000,-1000000,15000000,1.5,0.2
+2023-05,90000000,55000000,-3000000,12000000,0.9,1.5
+2023-06,85000000,60000000,-5000000,10000000,0.5,2.5"""
+
+st.download_button(
+    label="📥 Unduh Data Uji Coba (CSV)", 
+    data=csv_data.encode('utf-8'), 
+    file_name="data_uji_coba_accubiz_zx.csv", 
+    mime="text/csv"
+)
 st.markdown("---")
 
 # --- UPLOAD DATA ---
